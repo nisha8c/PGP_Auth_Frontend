@@ -17,7 +17,7 @@ import ProductList from './components/products/ProductList.jsx';
 import LoginForm from './components/login/LoginForm.jsx';
 import NewUserForm from './components/login/NewUserForm.jsx';
 import SuperAdminPage from "./admin/SuperAdminPage.jsx";
-import Layout from './components/Layout';
+//import Layout from './components/Layout';
 import Missing from './components/Missing';
 
 function addToCart(productId) {
