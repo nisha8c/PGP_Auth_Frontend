@@ -7,16 +7,18 @@ import {
     Route,
 } from 'react-router-dom';
 
-import {fakeProducts} from './fakedata/Fakedata.js';
+import {fakeProducts} from './fakedata/fakedata.js';
 import {fakecart} from './fakedata/fakecart.js';
 import NavBar from './components/Navbar.jsx';
 import Cart from './components/checkout/Cart.jsx';
 import AdminPage from "./admin/AdminPage.jsx";
 import ProfileBar from "./components/ProfileBar.jsx";
-import ProductList from './components/Products/ProductList.jsx';
+import ProductList from './components/products/ProductList.jsx';
 import LoginForm from './components/login/LoginForm.jsx';
 import NewUserForm from './components/login/NewUserForm.jsx';
 import SuperAdminPage from "./admin/SuperAdminPage.jsx";
+import Layout from './components/Layout';
+import Missing from './components/Missing';
 
 function addToCart(productId) {
     console.log("Add " + productId + " From the App")
@@ -44,14 +46,21 @@ function App() {
                     <NavBar/>
                 </header>
                 <Routes>
+                    {/* public routes */}
                     <Route exact path='/create-new-user' element={< NewUserForm/>}></Route>
                     <Route exact path='/login' element={< LoginForm/>}></Route>
                     <Route exact path='/'
-                           element={< ProductList products={fakeProducts} addToCart={addToCart}/>}></Route>
+                        element={< ProductList products={fakeProducts} addToCart={addToCart}/>}></Route>
                     <Route exact path='/cart'
-                           element={< Cart products={currentCart} removeFromCart={removeFromCart}/>}></Route>
+                        element={< Cart products={currentCart} removeFromCart={removeFromCart}/>}></Route>
+
+                    {/* protected routes */}
                     <Route exact path='/admin' element={< AdminPage/>}></Route>
                     <Route exact path='/admin/super' element={< SuperAdminPage/>}></Route>
+
+                    {/* catch all */}
+                    <Route path='*' element={<Missing />} />
+                
                 </Routes>
             </Router>
         </div>
